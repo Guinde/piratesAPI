@@ -1,0 +1,99 @@
+{
+    "pirates": [
+        {
+            "name": "Monkey D. Luffy",
+            "age": "25",
+            "status": "Commandant"
+        },
+        {
+            "name": "Roronoa Zoro",
+            "age": "28",
+            "status": "Épéiste"
+        },
+        {
+            "name": "Red John",
+            "age": "26",
+            "status": "Cuisinier"
+        },
+        {
+            "name": "Patrick Jane",
+            "age": "29",
+            "status": "Charpentier"
+        },
+        {
+            "name": "Pete Blackbeard",
+            "age": "25",
+            "status": "Docteur"
+        },
+        {
+            "name": "Bill Bones",
+            "age": "25",
+            "status": "Commandant"
+        },
+        {
+            "name": "John Blackeye",
+            "age": "25",
+            "status": "Canonnier"
+        },
+        {
+            "name": "Poopdeck Pete",
+            "age": "25",
+            "status": "Navigateur "
+        },
+        {
+            "name": "Big Jones",
+            "age": "25",
+            "status": "Docteur"
+        },
+        {
+            "name": "Thunder Lia",
+            "age": "25",
+            "status": "Second"
+        },
+        {
+            "name": "Rascal Jimmy",
+            "age": "25",
+            "status": "Épéiste"
+        },
+        {
+            "name": "Barnacle Bill",
+            "age": "25",
+            "status": "Cuisinier"
+        },
+        {
+            "name": "Jack Red-Locks",
+            "age": "25",
+            "status": "Navigateur "
+        },
+        {
+            "name": "Roger Starky",
+            "age": "32",
+            "status": "Commandant"
+        },
+        {
+            "name": "Wade Wilds",
+            "age": "26",
+            "status": "Charpentier"
+        },
+        {
+            "name": "Finn O’Fish",
+            "age": "21",
+            "status": "Cuisinier"
+        },
+        {
+            "name": "Wyatt Gold",
+            "age": "27",
+            "status": "Docteur"
+        },
+        {
+            "name": "Jacob Cutter",
+            "age": "22",
+            "status": "Épéiste"
+        },
+        {
+            "name": "Hansel The Handsome",
+            "age": "32",
+            "status": "Cononnier"
+        }
+    ]
+}
