@@ -5,7 +5,7 @@ exports.checkParamsLogin = (req, res, next) => {
     else next();
   };
 
-  exports.checkParamsRegister = (req, res, next) => {
+  exports.checkParamsCaptain = (req, res, next) => {
     const { name, password, age, crew } = req.body
     if (!name || !password || age || crew )
       res.status(400).json({ error: "You miss something" });
