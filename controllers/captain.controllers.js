@@ -1,4 +1,10 @@
-const { modifyCaptainInfos, getCaptainById, addPirate, getPiratesOfCrew } = require('../queries/captain.queries');
+const { 
+    modifyCaptainInfos, 
+    getCaptainById, 
+    addPirate, 
+    getPiratesOfCrew, 
+    removePirateFromCrew 
+} = require('../queries/captain.queries');
 
 exports.getCaptain = async (req, res) => {
     if(req.captain) {
@@ -36,4 +42,15 @@ exports.addNewPirate = async (req, res) => {
       res.status(400).json({ error: e.message });
     }
   };
+
+exports.removePirate = async (req, res) => {
+    try {
+        const { id } = req.captain;
+        const { _id } = req.body;
+        await removePirateFromCrew(id, _id);
+        res.status(200).json({ data: "success" });
+      } catch (e) {
+        res.status(400).json({ error: e.message });
+      }
+}
   
