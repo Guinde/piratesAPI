@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
+require('./pirate.model');
 
 const captainSchema = Schema({
   name: {
@@ -20,10 +21,10 @@ const captainSchema = Schema({
     type: String,
     required: true,
   },
-  pirates: {
+  memberOfCrew: [{
     type: [Schema.Types.ObjectId],
     ref: "pirates",
-  },
+  }],
 });
 
 /**
@@ -63,4 +64,4 @@ captainSchema.methods.comparePassword = function (pwd) {
   return bcrypt.compare(pwd, this.password);
 };
 
-module.exports = mongoose.model("Captain", captainSchema);
+module.exports = mongoose.model("captain", captainSchema);
