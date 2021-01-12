@@ -36,3 +36,12 @@ exports.createCaptain = async body => {
       throw new Error(e.message);
     }
   };
+
+  exports.modifyCaptainInfos = async (name, body) => {
+    try {
+      const captain = await Captain.updateOne({ name: name }, body).exec();
+      return captain;
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  }
