@@ -6,6 +6,7 @@ const errorHandler = require("errorhandler");
 const cookieParser = require("cookie-parser");
 
 const env = require(`./environment/${process.env.NODE_ENV}.js`);
+const indexRouter = require("./routes/index.js");
 const port = env.port;
 
 const app = express();
@@ -24,5 +25,6 @@ app.use("/", express.json());
 app.use("/", express.urlencoded({ extended: true }));
 app.use("/", cors(corsOptions));
 app.use(errorHandler());
+app.use("/", indexRouter);
 
 app.listen(port);
