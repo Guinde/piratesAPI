@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { editCaptain } = require('../controllers/captain.controllers');
+const { editCaptain, addNewPirate } = require('../controllers/captain.controllers');
 const { checkParamsCaptain } = require ('../middlewares/security.middlewares');
 
 /**
@@ -8,6 +8,10 @@ const { checkParamsCaptain } = require ('../middlewares/security.middlewares');
  */
 router.post("/edit", checkParamsCaptain, editCaptain);
 
-
+/**
+ * @route POST / edit
+ * @desc modify informations of captain 
+ */
+router.post("/addNewPirate", addNewPirate);
 
 module.exports = router;
