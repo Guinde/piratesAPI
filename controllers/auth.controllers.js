@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const env = require(`../environment/${process.env.NODE_ENV}.js`);
 const { getCaptainByName, getPiratesOfCrew, createCaptain } = require('../queries/captain.queries');
+const { createJwtToken } = require('../middlewares/jwt.middlewares');
 
 exports.login = async (req, res) => {
     const { name, password } = req.body;
@@ -10,23 +11,16 @@ exports.login = async (req, res) => {
             const pwdMatch = await captain.comparePassword(password);
             if(pwdMatch) {
                 const { name, age, crew } = captain;
-                const jwtToken = jwt.sign({
-                    name,
-                    age,
-                    crew,
-                    exp: Math.floor(Date.now() / 1000) + 60 * 60
-                }, env.jwtSecret
-                );
+                const jwtToken = createJwtToken(name, age, crew);
                 const pirates = await getPiratesOfCrew(name);
-                console.log(pirates)
                 const { memberOfCrew } = pirates;
                 res.status(200).json({ data: 'success', token: jwtToken, pirates: memberOfCrew })
             } else 
-                res.status(401).json({error: 'Wrong name or password'})
+                res.status(401).json({ error: 'Wrong name or password' })
         } else 
-            res.status(401).json({error: 'Wrong name or password'})
+            res.status(401).json({ error: 'Wrong name or password' })
     } catch(e) {
-        throw new Error(e.message);
+        res.status(401).json({ error: e.message })
     }
 }
 
