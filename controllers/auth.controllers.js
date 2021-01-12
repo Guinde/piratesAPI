@@ -10,11 +10,9 @@ exports.login = async (req, res) => {
         if(captain) {
             const pwdMatch = await captain.comparePassword(password);
             if(pwdMatch) {
-                const { name, age, crew } = captain;
-                const jwtToken = createJwtToken(name, age, crew);
-                const pirates = await getPiratesOfCrew(name);
-                const { memberOfCrew } = pirates;
-                res.status(200).json({ data: 'success', token: jwtToken, pirates: memberOfCrew })
+                const { _id, name, age, crew } = captain;
+                const jwtToken = createJwtToken(_id, name, age, crew);
+                res.status(200).json({ data: 'success', token: jwtToken })
             } else 
                 res.status(401).json({ error: 'Wrong name or password' })
         } else 
