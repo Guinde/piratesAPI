@@ -6,8 +6,9 @@ const env = require('../environment/development');
  * @desc Create token
  * @return { Object } new token
  */
-exports.createJwtToken = (name, age, crew) => {
+exports.createJwtToken = (id, name, age, crew) => {
     const jwtToken = jwt.sign({
+        id,
         name,
         age,
         crew,
