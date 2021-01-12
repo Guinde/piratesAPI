@@ -1,8 +1,20 @@
+const { isValidObjectId } = require("mongoose");
 const Captain = require("../database/models/captain.model");
 
 exports.getCaptainByName = async name => {
   try {
-    const captain = await Captain.findOne({ name: name }).exec();
+    const captain = await Captain.findOne({ name: name })
+    .exec();
+    return captain;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+};
+
+exports.getCaptainById = async id => {
+  try {
+    const captain = await Captain.findById(id)
+    .exec();
     return captain;
   } catch (e) {
     throw new Error(e.message);
@@ -41,6 +53,17 @@ exports.createCaptain = async body => {
     try {
       const captain = await Captain.updateOne({ name: name }, body).exec();
       return captain;
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  }
+
+  exports.addPirate = async (id, pirateId) => {
+    try {
+      return await Captain.updateOne(
+        { _id: id },
+        { $push: { memberOfCrew: pirateId} }
+      ).exec();
     } catch (e) {
       throw new Error(e.message);
     }
