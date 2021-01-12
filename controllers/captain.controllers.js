@@ -1,8 +1,14 @@
-const { modifyCaptainInfos, getCaptainByName } = require('../queries/captain.queries');
+const { modifyCaptainInfos, getCaptainById, addPirate, getPiratesOfCrew } = require('../queries/captain.queries');
 
-exports.getCaptain = (req, res) => {
-    if(req.captain)
-        res.status(200).json({ user: req.captain });
+exports.getCaptain = async (req, res) => {
+    if(req.captain) {
+        const { name, id } = req.captain;
+        const captain = await getCaptainById(id)
+        const pirates = await getPiratesOfCrew(name);
+        const { memberOfCrew } = pirates;
+        res.status(200).json({ user: captain, pirates: memberOfCrew });
+        res.end()
+    }
     else
         res.status(401).json({ error: "Not connected" });
 }
@@ -10,12 +16,24 @@ exports.getCaptain = (req, res) => {
 exports.editCaptain = async (req, res) => {
     if (req.captain) {
         try {
-          const { name } = req.captain;
+          const { id } = req.captain;
           await modifyCaptainInfos(name, req.body);
-          const captainUpdate = await getCaptainByName(name);
+          const captainUpdate = await getCaptainById(id);
           res.status(200).json({ data: captainUpdate });
         } catch (e) {
             res.status(401).json({ error: e.message })
         }
       }
 }
+
+exports.addNewPirate = async (req, res) => {
+    try {
+      const { id } = req.captain;
+      const { _id } = req.body;
+      await addPirate(id, _id);
+      res.status(200).json({ data: "success add new pirate" });
+    } catch (e) {
+      res.status(400).json({ error: e.message });
+    }
+  };
+  
