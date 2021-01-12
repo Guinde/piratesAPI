@@ -62,7 +62,18 @@ exports.createCaptain = async body => {
     try {
       return await Captain.updateOne(
         { _id: id },
-        { $push: { memberOfCrew: pirateId} }
+        { $push: { memberOfCrew: pirateId } }
+      ).exec();
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  }
+
+  exports.removePirateFromCrew = async (id, pirateId) => {
+    try {
+      return await Captain.updateOne(
+        { _id: id },
+        { $pull: {  memberOfCrew: pirateId } }
       ).exec();
     } catch (e) {
       throw new Error(e.message);
