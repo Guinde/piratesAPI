@@ -11,7 +11,7 @@ const { checkParamsLogin, checkParamsCaptain } = require("../middlewares/securit
 router.post("/login", checkParamsLogin, login);
 
 /**
- * @route POST /logout
+ * @route GET /logout
  * @desc Deconnexion  
  */
 router.get("/logout", verifyToken, logout);
