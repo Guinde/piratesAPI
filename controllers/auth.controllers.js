@@ -31,3 +31,8 @@ exports.register = async (req, res) => {
         res.status(400).json({ error: e.message });
       }
 }
+
+exports.logout = (req, res) => {
+    req.captain = null;
+    res.status(200).json({ data: 'Logout success' })
+}
