@@ -1,6 +1,4 @@
-const jwt = require("jsonwebtoken");
-const env = require(`../environment/${process.env.NODE_ENV}.js`);
-const { getCaptainByName, getPiratesOfCrew, createCaptain } = require('../queries/captain.queries');
+const { getCaptainByName, createCaptain } = require('../queries/captain.queries');
 const { createJwtToken } = require('../middlewares/jwt.middlewares');
 
 exports.login = async (req, res) => {
