@@ -49,9 +49,9 @@ exports.createCaptain = async body => {
     }
   };
 
-  exports.modifyCaptainInfos = async (name, body) => {
+  exports.modifyCaptainInfos = async (id, body) => {
     try {
-      const captain = await Captain.updateOne({ name: name }, body).exec();
+      const captain = await Captain.updateOne({ _id: id }, body).exec();
       return captain;
     } catch (e) {
       throw new Error(e.message);
