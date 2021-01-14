@@ -1,6 +1,6 @@
-#Pirates API with Node/Express and MongoDB/Mongoose
+# Pirates API with Node/Express and MongoDB/Mongoose
 
-##Step
+## Step
 
 1. Run rhe command "node script.js" to add a list of pirates in database
 2. Intall all dependencies with "npm i"
