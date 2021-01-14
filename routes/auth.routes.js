@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { login, register, logout } = require('../controllers/auth.controllers');
 const { getCaptain } = require ('../controllers/captain.controllers');
 const { verifyToken } = require('../middlewares/jwt.middlewares');
-const { checkParamsLogin, checkParamsCaptain } = require("../middlewares/security.middlewares");
+const { checkParamsLogin, checkParamsRegister } = require("../middlewares/security.middlewares");
 
 /**
  * @route POST /login
@@ -20,7 +20,7 @@ router.get("/logout", verifyToken, logout);
  * @route POST / register 
  * @desc Create new captain 
  */
-router.post("/register", checkParamsCaptain, register);
+router.post("/register", checkParamsRegister, register);
 
 /**
  * @route GET / user
